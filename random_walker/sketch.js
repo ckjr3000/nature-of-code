@@ -12,21 +12,11 @@ class Walker {
   }
 
   step() {
-    let choice = floor(random(0, 4));
-    switch (choice) {
-      case 0:
-        this.posX++;
-        break;
-      case 1:
-        this.posX--;
-        break;
-      case 2:
-        this.posY++;
-        break;
-      case 3:
-        this.posY--;
-        break;
-    }
+    let stepX = random(-1, 1); // possible steps along x axis
+    let stepY = random(-1, 1); // y axis
+
+    this.posX += stepX;
+    this.posY += stepY;
   }
 }
 
