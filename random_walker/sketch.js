@@ -34,11 +34,11 @@ let walker;
 
 function setup() {
   createCanvas(400, 400);
+  background(220);
   walker = new Walker(width / 2, height / 2);
 }
 
 function draw() {
-  background(220);
-  walker.show();
   walker.step();
+  walker.show();
 }
