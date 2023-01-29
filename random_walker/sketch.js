@@ -13,11 +13,13 @@ class Walker {
 
   step() {
     let stepSizes = [1, 2, 2, 3, 3, 3, 4, 4, 5];
-
     let stepSize = floor(random(stepSizes.length));
 
-    let stepX = random(-stepSize, stepSize); // possible steps along x axis
-    let stepY = random(-stepSize, stepSize); // y axis
+    let directions = [-stepSize, -stepSize, stepSize];
+    let direction = floor(random(directions.length));
+
+    let stepX = directions[direction];
+    let stepY = directions[direction];
 
     this.posX += stepX;
     this.posY += stepY;
@@ -28,11 +30,11 @@ let walker;
 
 function setup() {
   createCanvas(400, 400);
-  background(220);
   walker = new Walker(width / 2, height / 2);
 }
 
 function draw() {
+  background(220);
   walker.step();
   walker.show();
 }
