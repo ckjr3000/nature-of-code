@@ -12,8 +12,12 @@ class Walker {
   }
 
   step() {
-    let stepX = random(-1, 1); // possible steps along x axis
-    let stepY = random(-1, 1); // y axis
+    let stepSizes = [1, 2, 2, 3, 3, 3, 4, 4, 5];
+
+    let stepSize = floor(random(stepSizes.length));
+
+    let stepX = random(-stepSize, stepSize); // possible steps along x axis
+    let stepY = random(-stepSize, stepSize); // y axis
 
     this.posX += stepX;
     this.posY += stepY;
