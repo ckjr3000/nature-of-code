@@ -12,19 +12,29 @@ class Walker {
   }
 
   step() {
+    //50% chance of moving in direction of mouse
     let r = random(1);
-    if (r < 0.4) {
-      // 40% chance of moving to the right
-      this.posX++;
-    } else if (r < 0.6) {
-      // 20% chance moving left
-      this.posX--;
-    } else if (r < 0.8) {
-      // 20% chance of moving down
-      this.posY++;
+    if (r < 0.5) {
+      if (mouseX > width / 2 && mouseY < height / 2) {
+        // mouse is top right
+        this.posX++;
+        this.posY--;
+      } else if (mouseX > width / 2 && mouseY > height / 2) {
+        // mouse is bottom right
+        this.posX++;
+        this.posY++;
+      } else if (mouseX < width / 2 && mouseY < height / 2) {
+        // mouse is top left
+        this.posX--;
+        this.posY--;
+      } else {
+        // mouse is bottom left
+        this.posX--;
+        this.posY++;
+      }
     } else {
-      // 20% chance of moving up
-      this.posY--;
+      this.posX += random(-1, 1);
+      this.posY += random(-1, 1);
     }
   }
 }
