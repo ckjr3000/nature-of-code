@@ -12,17 +12,20 @@ class Walker {
   }
 
   step() {
-    let stepSizes = [1, 2, 2, 3, 3, 3, 4, 4, 5];
-    let stepSize = floor(random(stepSizes.length));
-
-    let directions = [-stepSize, -stepSize, stepSize];
-    let direction = floor(random(directions.length));
-
-    let stepX = directions[direction];
-    let stepY = directions[direction];
-
-    this.posX += stepX;
-    this.posY += stepY;
+    let r = random(1);
+    if (r < 0.4) {
+      // 40% chance of moving to the right
+      this.posX++;
+    } else if (r < 0.6) {
+      // 20% chance moving left
+      this.posX--;
+    } else if (r < 0.8) {
+      // 20% chance of moving down
+      this.posY++;
+    } else {
+      // 20% chance of moving up
+      this.posY--;
+    }
   }
 }
 
@@ -30,11 +33,11 @@ let walker;
 
 function setup() {
   createCanvas(400, 400);
+  background(220);
   walker = new Walker(width / 2, height / 2);
 }
 
 function draw() {
-  background(220);
   walker.step();
   walker.show();
 }
