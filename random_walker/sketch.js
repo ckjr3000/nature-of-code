@@ -5,37 +5,24 @@ class Walker {
   }
 
   show() {
-    stroke(255);
-    strokeWeight(4);
-    noFill();
+    stroke(0);
+    fill(255);
     ellipse(this.posX, this.posY, 25, 25);
   }
 
   step() {
-    //50% chance of moving in direction of mouse
-    let r = random(1);
-    if (r < 0.5) {
-      if (mouseX > width / 2 && mouseY < height / 2) {
-        // mouse is top right
-        this.posX++;
-        this.posY--;
-      } else if (mouseX > width / 2 && mouseY > height / 2) {
-        // mouse is bottom right
-        this.posX++;
-        this.posY++;
-      } else if (mouseX < width / 2 && mouseY < height / 2) {
-        // mouse is top left
-        this.posX--;
-        this.posY--;
-      } else {
-        // mouse is bottom left
-        this.posX--;
-        this.posY++;
-      }
-    } else {
-      this.posX += random(-1, 1);
-      this.posY += random(-1, 1);
+    // Vary stepsize based on probability of a size is equal to the size itself
+    let r1 = random(1);
+    let p = r1;
+    let r2 = random(1);
+
+    let stepSize = 0.5;
+
+    if (r2 < p) {
+      stepSize = r2 * 10;
     }
+    this.posX += random(-stepSize, stepSize);
+    this.posY += random(-stepSize, stepSize);
   }
 }
 
