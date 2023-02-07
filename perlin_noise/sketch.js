@@ -9,11 +9,14 @@ function setup() {
 function draw() {
   background(220);
 
-  let x = map(noise(xoff1), 0, 1, 0, width);
-  let y = map(noise(xoff2), 0, 1, 0, height);
+  stroke(0);
+  noFill();
+  beginShape();
+  for (let x = 0; x < width; x++) {
+    vertex(x, map(noise(xoff2), 0, 1, 0, height));
+    xoff2 += 0.02;
+  }
+  endShape();
 
-  xoff1 += 0.02;
-  xoff2 += 0.01;
-
-  ellipse(x, y, 25, 25);
+  noLoop();
 }
