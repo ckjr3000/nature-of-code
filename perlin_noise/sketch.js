@@ -1,14 +1,16 @@
 let inc = 0.02;
+let start = 0;
 
 function setup() {
   createCanvas(200, 200);
+  noiseDetail(16);
   //background(220);
 }
 
 function draw() {
   loadPixels();
   background(220);
-  let yoff = 0;
+  let yoff = start;
 
   for (let y = 0; y < height; y++) {
     let xoff = 0;
@@ -25,5 +27,5 @@ function draw() {
     yoff += inc;
   }
   updatePixels();
-  //noLoop();
+  start += inc;
 }
